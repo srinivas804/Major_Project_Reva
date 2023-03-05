@@ -4,6 +4,9 @@ https://revaedu-my.sharepoint.com/:o:/g/personal/r19cs203_cit_reva_edu_in/EgiXCO
 Schema: 
 https://lucid.app/lucidspark/419d86b2-c16e-4a65-bacc-95f5fde2b240/edit?viewport_loc=-647%2C143%2C2512%2C1184%2C0_0&invitationId=inv_4e960ab4-f9ae-4164-842f-2cbbe1ab9d10
 
+ER Diagram:
+https://lucid.app/lucidchart/e9191633-dc66-4a5f-ac7d-23d9c544b030/edit?viewport_loc=-806%2C-1561%2C5493%2C2279%2C0_0&invitationId=inv_ee62b73e-ea2f-4931-8839-6927ca0aa4ba
+
 Presentation:
   Architectural Design:
   https://revaedu-my.sharepoint.com/:p:/g/personal/r19cs203_cit_reva_edu_in/EQedQJZ8ebFAu8_ntqWaXJABvVtxvxUJvjCznBvBZ6uHOw?e=Vr94Ge
