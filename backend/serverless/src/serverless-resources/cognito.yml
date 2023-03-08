@@ -1,0 +1,53 @@
+Resources:
+  UserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: major-project
+      Schema:
+        - Name: name
+          AttributeDataType: String
+          Mutable: true
+          Required: false
+        - Name: email
+          AttributeDataType: String
+          Mutable: true
+          Required: true
+      AutoVerifiedAttributes: [email]
+      AccountRecoverySetting:
+        RecoveryMechanisms:
+          - Name: verified_email
+            Priority: 1
+
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 7
+          RequireLowercase: true
+          RequireNumbers: true
+          RequireUppercase: true
+          TemporaryPasswordValidityDays: 30
+
+      VerificationMessageTemplate:
+        DefaultEmailOption: CONFIRM_WITH_CODE
+
+  UserClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: major-project-${sls:stage}-userPoolClient
+      GenerateSecret: false
+      UserPoolId: { Ref: UserPool }
+      AccessTokenValidity: 5
+      IdTokenValidity: 5
+      ExplicitAuthFlows:
+        - 'ADMIN_NO_SRP_AUTH'
+      
+
+
+  # Cognito Identity pool
+  cognitoIdentityPool:
+    Type: AWS::Cognito::IdentityPool
+    Properties:
+      AllowUnauthenticatedIdentities: true
+      CognitoIdentityProviders:
+        - ClientId: !Ref UserClient
+          ProviderName: !GetAtt UserPool.ProviderName
+      IdentityPoolName: major-project-${sls:stage}-identityPool
