@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Lost Password</title>
-	<link rel="stylesheet" type="text/css" href="index.css">
-</head>
-<body>
-	<div class="verifyaccount-box">
-		<h1>Confirm your account </h1>
-		<form action="../Dashboard/index.html">
-			<label for="otp">Verification code</label>
-			<input type="text" id="otp" name="otp" placeholder="Enter Verification code" required>
-			<input type="submit" value="Confirm account">
-		</form>
-	</div>
-</body>
+  <head>
+    <title>Lost Password</title>
+    <!-- Load the AWS SDK for JavaScript -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.863.0.min.js"></script>
+    <!-- Initialize the AWS SDK with your Cognito pool ID -->
+    <link rel="stylesheet" type="text/css" href="index.css" />
+  </head>
+  <body>
+    <div class="verifyaccount-box">
+      <h1>Confirm your account</h1>
+      <form action="../Dashboard/index.html">
+        <label for="otp">Verification code</label>
+        <input
+          type="text"
+          id="otp"
+          name="otp"
+          placeholder="Enter Verification code"
+          required
+        />
+        <input
+          type="submit"
+          value="Confirm account"
+          onclick="verifyUser(); return false;"
+        />
+      </form>
+    </div>
+    <script src="./index.js"></script>
+  </body>
 </html>

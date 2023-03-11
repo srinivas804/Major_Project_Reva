@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Reset Password</title>
-	<link rel="stylesheet" type="text/css" href="./index.css">
-</head>
-<body>
-	<div class="reset-password-box">
-		<h1>Reset Password</h1>
-		<form id="reset-password-form" action="../Login/index.html">
-			<label for="otp">OTP</label>
-			<input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
-			<label for="new-password">Enter a new password</label>
-			<input type="password" id="new-password" name="new-password" placeholder="Enter a new password" required oninput="validatePassword()">
-			<label for="confirm-password">Confirm your new password</label>
-			<input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your new password" required>
-			<p id="error-message"></p>
-			<input type="submit" value="Submit">
-		</form>
-	</div>
-	<script src="./index.js"></script>
-</body>
+  <head>
+    <title>Reset Password</title>
+    <!-- Load the AWS SDK for JavaScript -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.863.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./index.css" />
+  </head>
+  <body>
+    <div class="reset-password-box">
+      <h1>Reset Password</h1>
+      <form id="reset-password-form" >
+        <label for="otp">OTP</label>
+        <input
+          type="text"
+          id="otp"
+          name="otp"
+          placeholder="Enter OTP"
+          required
+        />
+        <label for="new-password">Enter a new password</label>
+        <input
+          type="password"
+          id="new-password"
+          name="new-password"
+          placeholder="Enter a new password"
+          required
+        />
+        <label for="confirm-password">Confirm your new password</label>
+        <input
+          type="password"
+          id="confirm-password"
+          name="confirm-password"
+          placeholder="Confirm your new password"
+          required
+        />
+        <p id="error-message"></p>
+        <input
+          type="submit"
+          value="Submit"
+          onclick="resetPassword(); return false;"
+        />
+      </form>
+    </div>
+    <script src="./index.js"></script>
+  </body>
 </html>
