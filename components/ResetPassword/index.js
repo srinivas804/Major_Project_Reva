@@ -11,17 +11,29 @@ resetPasswordForm.addEventListener("submit", function (e) {
   const passwordRegex =
     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{7,}$/;
   if (!passwordRegex.test(newPasswordInput.value)) {
-    errorMessage.textContent =
-      "Password must contain at least one lowercase letter,n one uppercase letter, one number, one special character, and be at least 7 characters long";
-  } else if (newPasswordInput.value !== confirmPasswordInput.value) {
-    errorMessage.textContent = "New password and confirm password must match";
-  } else {
-    // Reset error message
-    errorMessage.textContent = "";
+    if (
+      !/(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])/.test(
+        newPasswordInput.value
+      )
+    ) {
+      errorMessage.textContent = "Password must contain one special character";
+    } else if (!/(?=.*[A-Z])/.test(newPasswordInput.value)) {
+      errorMessage.textContent = "Password must contain one upper case letter";
+    } else if (!/(?=.*[a-z])/.test(newPasswordInput.value)) {
+      errorMessage.textContent = "Password must contain one lowercase letter";
+    } else if (newPasswordInput.value.length < 7) {
+      errorMessage.textContent = "Password must be at least 7 characters long";
+    } else if (newPasswordInput.value !== confirmPasswordInput.value) {
+      errorMessage.textContent = "New password and confirm password must match";
+    } else {
+      // Reset error message
+      errorMessage.textContent = "";
 
-    // Redirect to login page
-    window.location.href = "../Login/index.html";
+      // Redirect to login page
+      window.location.href = "../Login/index.html";
+    }
   }
+
 });
 
 // Initialize the AWS SDK with your Cognito pool ID
@@ -36,7 +48,7 @@ function resetPassword() {
     ClientId: "6b9eog59q5u81lqgd0pg0kv8rn",
     ConfirmationCode: document.getElementById("otp").value,
     Password: document.getElementById("new-password").value,
-    Username: sessionStorage.getItem("email"), 
+    Username: sessionStorage.getItem("email"),
   };
   console.log(JSON.stringify(params));
   cognitoidentityserviceprovider.confirmForgotPassword(
