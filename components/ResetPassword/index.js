@@ -63,3 +63,39 @@ function resetPassword() {
     }
   );
 }
+
+
+
+
+
+function togglePasswordVisibility(event) {
+	var targetInputField;
+	if (event.target.id === "show-password") {
+		targetInputField = document.getElementById("new-password");
+	} else if (event.target.id === "toggle-confirm-password") {
+		targetInputField = document.getElementById("confirm-password");
+	}
+
+	if (targetInputField.type === "password") {
+		targetInputField.type = "text";
+		event.target.textContent = "Hide";
+	} else {
+		targetInputField.type = "password";
+		event.target.textContent = "Show";
+	}
+}
+
+const showPasswordButtons = document.querySelectorAll('.show-password');
+
+showPasswordButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const passwordInput = button.previousElementSibling;
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      button.textContent = 'Hide';
+    } else {
+      passwordInput.type = 'password';
+      button.textContent = 'Show';
+    }
+  });
+});
