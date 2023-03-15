@@ -81,6 +81,7 @@ class Blockchain:
             previous_block  = block
             block_index += 1
         return True
+#-------------------------------------------make changes in below function--------------------------------------
     
 # creating new transaction that'll be added to the list   
     def add_transaction(self, sender, reciever, amount):
@@ -95,7 +96,7 @@ class Blockchain:
         parsed_url = urlparse(address)
         self.nodes.add(parsed_url.netloc)
         
-# consensus protocol
+# consensus protocol (not of importance in our project)
     def replace_chain(self):
         network = self.nodes
         longest_chain = None
@@ -112,6 +113,8 @@ class Blockchain:
             self.chain = longest_chain
             return True
         return False
+
+#------------------------------ecpc verification function to be added---------------------------------
         
 #part 2- mining the blockchain
 
@@ -125,6 +128,8 @@ node_address = str(uuid4()).replace('-', '')
 
 # creating a blockchain instance
 blockchain = Blockchain()
+
+#----------------changes to be made in below function (ecpc function call, should return status)-----------------
 
 # mining a new block
 @app.route('/mine_block', methods = ['GET'])
@@ -159,6 +164,9 @@ def is_valid():
     return jsonify(response), 200
 
 # adding a new transaction to the blockchain
+
+#------------------------changes required below (ecpc function call)---------------------------------
+
 @app.route('/add_transaction', methods = ['POST'])
 def add_transaction():
     json = request.get_json()
