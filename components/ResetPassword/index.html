@@ -19,21 +19,23 @@
           required
         />
         <label for="new-password">Enter a new password</label>
-        <input
-          type="password"
-          id="new-password"
-          name="new-password"
-          placeholder="Enter a new password"
-          required
-        />
+        <div class="input-container">
+          <input 
+          type="password" 
+          id="new-password" 
+          name="new-password" 
+          placeholder="Password" required>
+          <span class="show-password">Show</span>
+        </div>
         <label for="confirm-password">Confirm your new password</label>
-        <input
-          type="password"
-          id="confirm-password"
+        <div class="input-container">
+          <input 
+          type="password" 
+          id="confirm-password" 
           name="confirm-password"
-          placeholder="Confirm your new password"
-          required
-        />
+          placeholder="Confirm Password" required>
+          <span class="show-password">Show</span>
+        </div>
         <p id="error-message"></p>
         <input
           type="submit"
