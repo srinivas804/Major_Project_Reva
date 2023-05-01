@@ -1,0 +1,37 @@
+.profile {
+
+    /* display: flex; */
+    background-color: white;
+    width: 298px;
+    height: fit-content;
+    padding: 18px;
+    line-height: 30px;
+    border: 1px solid rgb(162, 162, 162);
+    margin-bottom: 20px;
+}
+
+body {
+    background-color: #EEEFF6;
+}
+
+.update-text {
+    float: right;
+    padding-right: 25%;
+}
+
+.dashboard-container {
+    display: flex;
+    width: fit-content;
+    margin: auto;
+    /* background-color: red; */
+}
+
+.right-card {
+    width: 700px;
+    /* height: 150px; */
+    background-color: white;
+    padding: 15px;
+    margin-left: 35px;
+    margin-bottom: 35px;
+    border: 1px solid rgb(162, 162, 162);
+}

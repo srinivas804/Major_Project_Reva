@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="./css/fileIncomeTaxReturn.css">
     <title>Home | Income Tax Department</title>
 </head>
 <!-- bg-dark -->
@@ -20,7 +21,7 @@
                     <img src="./images/logo.svg" alt="EFiling Logo" typeof="Image" role="img" id="en">
                 </a>
             </div>
-            <div class="header-topright">
+            <!-- <div class="header-topright">
                 <ul class="menu">
                     <li id="login" aria-label="Login button" role="presentation">
                         <div><a class="btn login" data-drupal-button-link="btn" href="../LoginWorkflow/Login/index.html"
@@ -32,7 +33,7 @@
                                 role="presentation" id="registration">Register</a></div>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
 
     </header>
@@ -45,10 +46,10 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./dashboard.html">Dashboard <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#">e-File</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact Us</a>
@@ -70,47 +71,30 @@
     </nav>
 
     <section>
-        <br><br>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque itaque labore ullam? Perferendis quidem
-        nobis quisquam sunt? Natus cumque rem modi dolor exercitationem voluptatibus. Architecto porro nihil quod
-        quaerat ex?
-        <br><br>
-        <div class="container-section">
-            <div class="links">
-                <h3>File your IT Returns</h3>
-                <p>
-                    Login/Resister using your email ID and update your profile to start filing your Income Tax Returns.
-                    Use data recieved from form 16 and form 16A to fill ITR application. After filling all fields you
-                    can verify and submit the form. You can check the status in a while.
-                </p>
-                <div class="buttons">
-                    <ul class="ulMenu">
-                        <li id="register" aria-label="Login button" role="presentation">
-                            <div><a class="btn login register" data-drupal-button-link="btn"
-                                    href="../LoginWorkflow/Login/index.html" aria-label="Login button"
-                                    role="presentation">Login</a></div>
-                        </li>
-                        <li id="register" aria-label="Register button" role="presentation">
-                            <div><a class="btn login register" data-drupal-button-link="btn"
-                                    href="../LoginWorkflow/SignUp/index.html" aria-label="Register button"
-                                    role="presentation" id="registration">Register</a></div>
-                        </li>
-                    </ul>
+        <br><br><br>
+        <h3>Income Tax Return (ITR)</h3>
+        <div class="itr-container">
+            <form action="./fill_itr.html">
+                <div class="form-group">
+                    <label for="assessmentYear">Select Assessment year</label>
+                    <select class="form-control" mandatory id="assessmentYear">
+                        <option>2022-23 (Current A.Y.)</option>
+                        <option>2021-22</option>
+                        <option>2020-21</option>
+                        <option>2019-20</option>
+                        <option>2018-19</option>
+                    </select>
                 </div>
-                <hr>
-                <h3>To check your IT return status</h3>
-                <p>
-                    You can check your most recent Income Tax Return verification status by just giving your PAN number.
-                </p>
-                <a class="btn login register status-btn" data-drupal-button-link="btn"
-                    href="#" aria-label="Register button" role="presentation"
-                    id="registration">Check status</a>
-                <hr>
-            </div>
-            <div class="image-main">
-                <img src="./images/main-image.jpg" alt="" style="width:95%">
+            </form>
+            <div class="itr-buttons">
+                <a class="btn login back-btn" data-drupal-button-link="btn" href="#" aria-label="Register button"
+                    role="presentation" id="registration">&lt; &nbsp; Back</a>
+                <a class="btn login register status-btn" data-drupal-button-link="btn" href="./fill_itr.html"
+                    aria-label="Register button" role="presentation" id="registration">Continue &nbsp; &gt;</a>
             </div>
         </div>
+        <br><br><br>
+
     </section>
 
     <footer>
@@ -119,7 +103,7 @@
                 <div class="region region-copyright-left">
                     <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
                         <div class="lastfooter flex">
-                            <p><img alt="National Emblem" class="img1" src="./images/india.svg"></p>
+                            <p><img alt="National Emblem" class="img1" src="./images/emblem_coloured.svg"></p>
                         </div>
                     </div>
                 </div>

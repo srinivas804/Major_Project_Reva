@@ -1,0 +1,195 @@
+
+header {
+    padding-top: 5px;
+    padding-right: 8.143%;
+    padding-bottom: 5px;
+    padding-left: 8.143%;
+}
+
+.container {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: flex;
+}
+.header-top {
+    margin-top: 14px;
+    margin-right: 0;
+    margin-bottom: 15px;
+    margin-left: 0;
+    padding: 0;
+    width: 33.33333333%;
+}
+.header-topright {
+    float: right;
+    width: 66.66666667%;
+    margin-top: 3px;
+    margin-right: 0;
+    margin-bottom: 22px;
+    margin-left: 0;
+    text-align: right;
+    padding-left: 0;
+    padding-right: 0;
+    height: 30px;
+}
+.menu {
+    float: right;
+    padding-top: 19px;
+}
+ul.menu>li {
+    display: inline-block;
+}
+a {
+    color: #076bcf;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+li#login a.btn.login {
+    background: transparent;
+    color: #2a3a8d;
+    border-radius: 4px;
+    border: solid 1px #2a3a8d;
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "Roboto",sans-serif;
+    line-height: 1.17;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    height: 30px;
+}
+li#register .btn.register {
+    background: transparent;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+    background-color: #2a3a8d;
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    border: none;
+    font-size: 12px;
+    font-family: "Roboto",sans-serif;
+    line-height: 1.17;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+}
+.btn {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+section {
+    /* padding-top: 5px; */
+    padding-right: 8.143%;
+    /* padding-bottom: 5px; */
+    padding-left: 8.143%;
+    /* height: 100%; */
+    /* background-color: aliceblue; */
+}
+.container-section {
+    /* height: 100; */
+    display: flex;
+    padding-bottom: 10px;
+}
+.links {
+    width: 50%;
+    padding-right: 15px;
+}
+.image-main {
+    width: 50%;
+}
+
+.buttons {
+    /* float: right; */
+    /* width: 66.66666667%; */
+    margin-top: 3px;
+    margin-right: 0;
+    margin-bottom: 22px;
+    margin-left: 0;
+    /* text-align: right; */
+    padding-left: 0;
+    padding-right: 0;
+    height: 30px;
+}
+
+.ulMenu {
+    /* float: right; */
+    padding-top: 5px;    
+    padding-inline-start: 0px;
+}
+ul.ulMenu>li {
+    display: inline-block;
+    padding: 0px;
+}
+
+.status-btn {
+    background: transparent;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+    background-color: #2a3a8d;
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    border: none;
+    font-size: 12px;
+    font-family: "Roboto",sans-serif;
+    line-height: 1.17;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+}
+
+footer {
+    background-color: #1A2038;
+    color: #B1BDC4;
+    width: 100%;
+    padding-top: 12px;
+    padding-right: 8.143%;
+    /* padding-bottom: 5px; */
+    padding-left: 8.143%;
+    min-height: fit-content;
+    /* height: 100px; */
+    font-size: small;
+    /* position: fixed; */
+    bottom: 0;
+    left: 0;
+}
+
+.footer-container {
+    display: flex;
+}
+
