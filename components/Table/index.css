@@ -1,0 +1,70 @@
+/* Table styles */
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #ddd;
+  }
+  
+  .send-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .send-button:hover {
+    background-color: #3e8e41;
+  }
+  
+  input[type=checkbox] {
+    transform: scale(1.5);
+  }
+  
+  /* Header styles */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ddd;
+    padding: 16px;
+  }
+  
+  .back-button {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .logout-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: #3e8e41;
+  }
+  
