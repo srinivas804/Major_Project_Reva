@@ -1,0 +1,52 @@
+<html>
+  <body>
+    <form method="POST" id="myForm">
+      <label for="userId">UserId:</label>
+      <input type="text" name="userId" id="userId" />
+      <br />
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" />
+      <br />
+      <label for="age">Age:</label>
+      <input type="number" name="age" id="age" />
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      document.querySelector("#myForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const payload = {
+          userId: document.querySelector("#userId").value,
+          name: document.querySelector("#name").value,
+          age: document.querySelector("#age").value,
+        };
+        postData(payload);
+      });
+      async function postData(data) {
+        var requestOptions = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Connection: "keep-alive",
+            Accept: "*/*",
+          },
+
+          body: JSON.stringify(data),
+          redirect: "follow",
+        };
+
+        const response = await fetch(
+          "http://192.168.0.198:4003/user/itr",
+          requestOptions
+        )
+          .then((response) => {
+            window.location.href = "./text.html";
+          })
+          .then((response) => {
+            window.location.href = "./text.html";
+          })
+          .catch((error) => console.log("error", error));
+      }
+    </script>
+  </body>
+</html>
