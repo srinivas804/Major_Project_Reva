@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>User Profile</title>
+  </head>
+  <body>
+    <h1 id="hello">Hello</h1>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const userId = params.get("userId");
+      fetch(`http://localhost:4003/user/profile?userId=${userId}`)
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          document.getElementById("aadhaarNumber").innerHTML =
+            json.aadhaarNumber;
+          document.getElementById("customerId").innerHTML = json.customerId;
+          document.getElementById("email").innerHTML = json.email;
+          document.getElementById("firstName").innerHTML = json.firstName;
+          document.getElementById("profileImage").src = json.profile;
+        });
+    </script>
+    <h1>
+      aadhaarNumber: <span id="aadhaarNumber" style="color: royalblue"></span>
+    </h1>
+    <h1>customerId: <span id="customerId" style="color: royalblue"></span></h1>
+    <h1>email: <span id="email" style="color: royalblue"></span></h1>
+    <h1>firstName: <span id="firstName" style="color: royalblue"></span></h1>
+    <img id="profileImage" />
+  </body>
+</html> -->
+
+<html>
+  <body>
+    <form method="POST" id="myForm">
+      <label for="userId">UserId:</label>
+      <input type="text" name="userId" id="userId" />
+      <br />
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" />
+      <br />
+      <label for="age">Age:</label>
+      <input type="number" name="age" id="age" />
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      const form = document.getElementById("myForm");
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        console.log("Form data:", formData);
+        console.log("User ID:", formData.get("userId"));
+        console.log("Name:", formData.get("name"));
+        console.log("Age:", formData.get("age"));
+        setTimeout(async () => {
+          const response = await fetch("http://192.168.0.198:4003/user/itr", {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            mode: "no-cors", // you probably don't want this... let the default "cors"
+            cache: "no-cache", // not sure why you'd want that either...
+            credentials: "same-origin", // include, *same-origin, omit
+            redirect: "follow", // manual, *follow, error
+            referrerPolicy: "no-referrer",
+            body: formData, // pass directly the FormData here
+          })
+            .then((response) => {
+              response.json();
+              console.log(response.json());
+              console.log("Success!");
+              window.location.href = "./text.html"; // redirect on success
+            })
+            .catch((error) => {
+              console.log("Error:", error);
+            });
+        }, 100);
+      });
+    </script>
+  </body>
+</html>
