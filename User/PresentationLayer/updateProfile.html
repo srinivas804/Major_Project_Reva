@@ -110,6 +110,11 @@
                             <input type="text" class="form-control col PAN" id="PANNumber" placeholder="PAN..."
                                 name="username">
                         </div>
+                        <div class="form-group col">
+                            <label for="CustmorId">CustmorId:</label>
+                            <input type="text" class="form-control col PAN" id="customerId" placeholder="CustmorId..."
+                                name="username">
+                        </div>
                     </div>
 
 
@@ -128,15 +133,59 @@
                                 name="email">
                         </div>
                     </div>
-
+<!-- 
                     <h5>Profile Photo</h5>
                     <div class="form-group">
                         <label for="file">Choose an image to upload:</label>
                         <input type="file" name="file" id="file" class="form-control-file">
-                    </div>
+                    </div> -->
                     <a class="btn btn-primary" style="background-color: #29398D;" data-drupal-button-link="btn" href="./dashboard.html"
                         aria-label="Register button" role="presentation" id="registration">Go Back</a>
-                    <button type="submit" class="btn btn-primary" style="background-color: #29398D;">Upload</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: #29398D;">Update</button>
+                   
+
+                  <script>
+                    document.querySelector("#updateProfileForm").addEventListener("submit", (e) => {
+                      e.preventDefault();
+                      const payload = {
+                        userId: 123,
+                        firstName: document.querySelector("#firstName").value,
+                        middleName: document.querySelector("#middleName").value,
+                        lastName: document.querySelector("#lastName").value,
+                        PANNumber: document.querySelector("#PANNumber").value,
+                        phoneNumber: document.querySelector("#phoneNumber").value,
+                        email: document.querySelector("#email").value,
+                        aadhaarNumber: document.querySelector("#aadhaarNumber").value,
+                        customerId: document.querySelector("#customerId").value
+
+                      };
+                      console.log({ payload });
+                      postData(payload);
+                    });
+                    async function postData(data) {
+                      var myHeaders = new Headers();
+                      //   myHeaders.append("Content-Type", "application/json");
+              
+                      console.log(data);
+                      var requestOptions = {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/x-www-form-urlencoded",
+                          Connection: "keep-alive",
+                          Accept: "/",
+                        },
+              
+                        body: JSON.stringify(data),
+                        redirect: "follow",
+                      };
+                      console.log({ requestOptions });
+              
+                      await fetch("http://192.168.0.198:4003/user/update-profile", requestOptions)
+                        .then((response) => (window.location.href = "./dashboard.html"))
+                        .then((result) => console.log(result))
+                        .catch((error) => console.log("error", error));
+                    }
+                  </script>
 
                 </fieldset>
             </form>
