@@ -75,19 +75,19 @@
         
         <div class="dashboard-container">
             <div class="profile">
-                <h3>Welcome back, <br>JOHN</h3>
+                <h3>Welcome back, <br><span id="firstName"></span> </h3>
                 <div class="image">
-                    <img style="float: left; height: 130px; width: 130px; border-radius: 15%;"
-                        src="./images/user_profile_photo.png" alt="">
+                    <img style="float: left; height: 130px; width: 130px; border-radius: 50%; padding: 8px;" id="myImage"
+                        src="#" alt="">
                     <br>
                     <p>
-                        ABCDS1274N <br>
-                        XXXXXXXX2134 <br>
-                        johndoe@gmail.com <br>
+                        <span id="customerId"></span> <br>
+                        <span id="aadhaarNumber"></span> <br><br></p><p>
+                        <span id="email"></span> <br>
                         Contact Details <a href="#" class="update-text">Update</a> <br>
                         Bank Account <a href="#" class="update-text">Update</a>
                     </p>
-
+                    
                 </div>
             </div>
             <div class="dashboard-right-content">
@@ -120,8 +120,22 @@
 
 
         </div>
-
-
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const userId = params.get("userId");
+            console.log({userId})
+            fetch(`http://192.168.0.198:4003/user/profile?userId=${userId}`)
+              .then((response) => response.json())
+              .then((json) => {
+                console.log(json);
+                document.getElementById("aadhaarNumber").innerHTML = json.aadhaarNumber;
+                document.getElementById("customerId").innerHTML = json.customerId;
+                document.getElementById("email").innerHTML = json.email;
+                document.getElementById("firstName").innerHTML = json.firstName;
+                document.getElementById("myImage").src = json.profile;
+              });
+          </script>
+         
 
     </section>
 

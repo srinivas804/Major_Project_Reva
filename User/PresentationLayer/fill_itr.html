@@ -78,9 +78,9 @@
             details entered in each section are correct before proceeding.</p>
 
         <h3>Income Tax Return</h3> <br>
-        <form action="">
+        
 
-            <form action="" method="post">
+            <form id="myForm"  method="POST" >
                 <!-- Personal Information  -->
                 <h4>Personal Information</h4>
                 <fieldset class="field-set">
@@ -92,34 +92,34 @@
                         <div class="form-group col">
                             <label for="firstName">First Name:</label>
                             <input type="text" class="form-control firstName" id="firstName" placeholder="First Name..."
-                                name="username">
+                                name="username" readonly>
                         </div>
                         <div class="form-group col">
                             <label for="middleName">Middle Name:</label>
                             <input type="text" class="form-control middleName" id="middleName"
-                                placeholder="Middle Name..." name="username">
+                                placeholder="Middle Name..." name="username" readonly>
                         </div>
                         <div class="form-group col">
                             <label for="lastName">Last Name:</label>
                             <input type="text" class="form-control lastName" id="lastName" placeholder="Last Name..."
-                                name="username">
+                                name="username" readonly>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col">
                             <label for="Aadhaar">Aadhaar:</label>
-                            <input type="text" class="form-control Aadhaar col" id="Aadhaar" placeholder="Aadhaar..."
-                                name="username">
+                            <input type="text" class="form-control Aadhaar col" id="aadhaarNumber" placeholder="Aadhaar..."
+                                name="username" readonly>
 
                         </div>
                         <div class="form-group col">
                             <label for="PAN">PAN:</label>
-                            <input type="text" class="form-control col PAN" id="PAN" placeholder="PAN..."
-                                name="username">
+                            <input type="text" class="form-control col PAN" id="PANNumber" placeholder="PAN..."
+                                name="username" readonly>
                         </div>
                     </div>
-
+                      
                     <h5>Contact</h5>
                     Details furnished here will be used for communication purposes
                     <hr>
@@ -127,16 +127,41 @@
                         <div class="form-group col">
                             <label for="email">Email:</label>
                             <input type="email" class="form-control email" id="email" placeholder="Email..."
-                                name="email">
+                                name="email" readonly>
                         </div>
                         <div class="form-group col">
                             <label for="phone">Phone:</label>
-                            <input type="phone" class="form-control phone" id="phone" placeholder="Phone..."
-                                name="email">
+                            <input type="phone" class="form-control phone" id="phoneNumber" placeholder="Phone..."
+                                name="email" readonly>
                         </div>
                     </div>
 
                 </fieldset>
+                <script>
+                    const userId = 123; // set the user ID
+                    const url = `http://192.168.0.198:4003/user/profile?userId=${userId}`;
+                  
+                    fetch(url)
+                      .then(response => response.json())
+                      .then(data => {
+                        const firstName = data.firstName;
+                        const middleName = data.middleName;
+                        const lastName = data.lastName;
+                        const aadhaarNumber = data.aadhaarNumber;
+                        const PANNumber = data.PANNumber;
+                        const email = data.email;
+                        const phoneNumber = data.phoneNumber;
+                        // update the input fields with the retrieved values
+                        document.querySelector('#firstName').value = firstName;
+                        document.querySelector('#middleName').value = middleName;
+                        document.querySelector('#lastName').value = lastName;
+                        document.querySelector('#aadhaarNumber').value = aadhaarNumber;
+                        document.querySelector('#PANNumber').value = PANNumber;
+                        document.querySelector('#email').value = email;
+                        document.querySelector('#phoneNumber').value = phoneNumber;
+                      })
+                      .catch(error => console.error(error));
+                  </script>
                 <br>
                 <!-- Contact Information -->
                 <h4>Enter your income source details</h4>
@@ -144,35 +169,35 @@
                     Please enter your income sources as collected from various sources. <br> <br>
                     <div class="form-control">
                         <div class="form-group col-7">
-                            <label for="gross-salary">i. Gross Salary (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="gross-salary" placeholder="&#x20B9;"
-                                name="gross-salary">
+                            <label for="grossSalary">i. Gross Salary (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="grossSalary" placeholder="&#x20B9;"
+                                name="grossSalary">
                         </div>
                         <div class="form-group col-7">
-                            <label for="lessExemptAllowance">ii. Less: Exempt Allowance (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="lessExemptAllowance" placeholder="&#x20B9;"
-                                name="lessExemptAllowance">
+                            <label for="exemptAllowance">ii. Less: Exempt Allowance (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="exemptAllowance" placeholder="&#x20B9;"
+                                name="exemptAllowance">
                         </div>
                         <div class="form-group col-7">
-                            <label for="less-89A">iia. Less: Income claimed for relief from taxation u/s 89A
+                            <label for="claimedRelifIncome">iia. Less: Income claimed for relief from taxation u/s 89A
                                 (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="less-89A" placeholder="&#x20B9;"
-                                name="less-89A">
+                            <input type="number" class="form-control" id="claimedRelifIncome" placeholder="&#x20B9;"
+                                name="claimedRelifIncome">
                         </div>
                         <div class="form-group col-7">
-                            <label for="gross-salary">iii. Net Salary (i - ii - iia) (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="gross-salary" placeholder="&#x20B9;"
-                                name="gross-salary">
+                            <label for="netSalary">iii. Net Salary (i - ii - iia) (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="netSalary" placeholder="&#x20B9;"
+                                name="netSalary" readonly>
                         </div>
                         <div class="form-group col-7">
-                            <label for="deductions-16">iv. Deductions u/s 16 (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="deductions-16" placeholder="&#x20B9;"
-                                name="deductions-16">
+                            <label for="deductions">iv. Deductions u/s 16 (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="deductions" placeholder="&#x20B9;"
+                                name="deductions">
                         </div>
                         <div class="form-group col-7">
-                            <label for="grossTotalIncome">v. Gross Total Income' (iii - iv) (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="grossTotalIncome" placeholder="&#x20B9;"
-                                name="grossTotalIncome">
+                            <label for="grossTotalSalary">v. Gross Total Income' (iii - iv) (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="grossTotalSalary" placeholder="&#x20B9;"
+                                name="grossTotalSalary" readonly>
                         </div>
                     </div>
 
@@ -184,7 +209,7 @@
                     <div class="form">
                         <div class="form-group col-7">
                             <label for="totalDeductions">Total Deductions (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="totalDeductions" placeholder="&#x20B9;"
+                            <input type="number" class="form-control" id="totalDeduction" placeholder="&#x20B9;"
                                 name="totalDeductions">
 
                         </div>
@@ -196,21 +221,21 @@
                     Please enter details of taxes paid by you in the last financial year and proceed further. <br> <br>
                     <div class="form">
                         <div class="form-group col-7">
-                            <label for="TDS_SalaryIncome">Details of Tax Deducted at Source (TDS) on Salary Income
+                            <label for="TDSOnSalaryIncome">Details of Tax Deducted at Source (TDS) on Salary Income
                                 (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="TDS_SalaryIncome" placeholder="&#x20B9;"
-                                name="TDS_SalaryIncome">
+                            <input type="number" class="form-control" id="TDSOnSalaryIncome" placeholder="&#x20B9;"
+                                name="TDSOnSalaryIncome">
                         </div>
                         <div class="form-group col-7">
-                            <label for="TDS_NonSalaryIncome">Details of Tax Deducted at Source (TDS) from Income other
+                            <label for="TDSFromOtherIncomes">Details of Tax Deducted at Source (TDS) from Income other
                                 than Salary (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="TDS_NonSalaryIncome" placeholder="&#x20B9;"
-                                name="TDS_NonSalaryIncome">
+                            <input type="number" class="form-control" id="TDSFromOtherIncomes" placeholder="&#x20B9;"
+                                name="TDSFromOtherIncomes">
                         </div>
                         <div class="form-group col-7">
-                            <label for="totalTaxesPaid">Total Taxes Paid (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="totalTaxesPaid" placeholder="&#x20B9;"
-                                name="totalTaxesPaid">
+                            <label for="totalTaxPaid">Total Taxes Paid (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="totalTaxPaid" placeholder="&#x20B9;"
+                                name="totalTaxPaid">
                         </div>
                     </div>
                 </fieldset>
@@ -223,19 +248,19 @@
                     <hr>
                     <div class="form">
                         <div class="form-group col-7">
-                            <label for="grossTotalIncomeFinal">Gross Total Income (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="grossTotalIncomeFinal" placeholder="&#x20B9;"
-                                name="grossTotalIncomeFinal">
+                            <label for="grossTotalIncome">Gross Total Income (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="grossTotalIncome" placeholder="&#x20B9;"
+                                name="grossTotalIncome" readonly>
                         </div>
                         <div class="form-group col-7">
-                            <label for="totalDeductionsFinal">Total Deductions (&#x20B9;):</label>
-                            <input type="number" class="form-control" id="totalDeductionsFinal" placeholder="&#x20B9;"
-                                name="totalDeductionsFinal">
+                            <label for="totalDeductions">Total Deductions (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="totalDeductions" placeholder="&#x20B9;"
+                                name="totalDeductions" readonly>
                         </div>
                         <div class="form-group col-7">
                             <label for="totalIncome">Total Income (&#x20B9;):</label>
                             <input type="number" class="form-control" id="totalIncome" placeholder="&#x20B9;"
-                                name="totalIncome">
+                                name="totalIncome" readonly >
                         </div>
                         <h5>Computation of Tax</h5>
                         <hr>
@@ -249,11 +274,146 @@
                 <br>
                 Verify all details you have entered above and click on proceed to verification.
                 <br><br>
-                <a class="btn login register status-btn" data-drupal-button-link="btn" href="./verification.html"
-                    aria-label="Register button" role="presentation" id="registration">Proceed to Verification &nbsp; &gt;</a>
-                <br><br>
+                    <input
+                    type="submit"
+                    value="Proceed to Verification  >"
+                    style="
+                      background: transparent;
+                      color: #ffffff;
+                      font-weight: 500;
+                      border-radius: 4px;
+                      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+                      background-color: #2a3a8d;
+                      padding: 8px 16px;
+                      border: none;
+                      font-size: 12px;
+                      font-family: Roboto, sans-serif;
+                      line-height: 1.17;
+                      font-stretch: normal;
+                      font-style: normal;
+                      letter-spacing: normal;
+                    "
+                  />
+                  <br><br>
+                  <script>
+                    document.querySelector("#myForm").addEventListener("submit", (e) => {
+                      e.preventDefault();
+                      const payload = {
+                        userId: 123,
+                        firstName: document.querySelector("#firstName").value,
+                        middleName: document.querySelector("#middleName").value,
+                        lastName: document.querySelector("#lastName").value,
+                        PANNumber: document.querySelector("#PANNumber").value,
+                        phoneNumber: document.querySelector("#phoneNumber").value,
+                        email: document.querySelector("#email").value,
+                        grossSalary: document.querySelector("#grossSalary").value,
+                        exemptAllowance: document.querySelector("#exemptAllowance").value,
+                        claimedRelifIncome: document.querySelector("#claimedRelifIncome").value,
+                        netSalary: document.querySelector("#netSalary").value,
+                        deductions: document.querySelector("#deductions").value,
+                        grossTotalSalary:document.querySelector("#grossTotalSalary"),
+                        totalDeductions: document.querySelector("#totalDeductions").value,
+                        TDSOnSalaryIncome: document.querySelector("#TDSOnSalaryIncome").value,
+                        TDSFromOtherIncomes: document.querySelector("#TDSFromOtherIncomes").value,
+                        totalTaxPaid: document.querySelector("#totalTaxPaid").value,
+                        grossTotalIncome: document.querySelector("#grossTotalIncome").value,
+                        //totalDeductions: document.querySelector("#totalDeductions").value,
+                        totalIncome: document.querySelector("#totalIncome").value,
+                        totalTax: document.querySelector("#totalTax").value,
 
+                      };
+                      console.log({ payload });
+                      postData(payload);
+                    });
+                    async function postData(data) {
+                      var myHeaders = new Headers();
+                      //   myHeaders.append("Content-Type", "application/json");
+              
+                      console.log(data);
+                      var requestOptions = {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/x-www-form-urlencoded",
+                          Connection: "keep-alive",
+                          Accept: "/",
+                        },
+              
+                        body: JSON.stringify(data),
+                        redirect: "follow",
+                      };
+                      console.log({ requestOptions });
+              
+                      await fetch("http://192.168.0.198:4003/user/itr", requestOptions)
+                        .then((response) => (window.location.href = "./verification.html"))
+                        .then((result) => console.log(result))
+                        .catch((error) => console.log("error", error));
+                    }
+                  </script>
+                  <script>
+                    const grossSalaryInput = document.getElementById("grossSalary");
+                    const exemptAllowanceInput = document.getElementById("exemptAllowance");
+                    const claimedRelifIncomeInput=document.getElementById("claimedRelifIncome")
+                    const netSalaryInput = document.getElementById("netSalary");
+                    const deductionsInput = document.getElementById("deductions");
+                    const grossTotalSalaryInput = document.getElementById("grossTotalSalary");
+                    const totalDeductionInput = document.getElementById("totalDeduction");
+                    const totalDeductionsInput = document.getElementById("totalDeductions");
+                    const grossTotalIncomeInput = document.getElementById("grossTotalIncome");
+                    const totalIncomeInput = document.getElementById("totalIncome")
+
+                    
+                    grossSalaryInput.addEventListener("input", updateNetSalary);
+                    exemptAllowanceInput.addEventListener("input", updateNetSalary);
+                    claimedRelifIncomeInput.addEventListener("input", updateNetSalary);
+                    function updateNetSalary() {
+                      const grossSalary = Number(grossSalaryInput.value);
+                      const exemptAllowance = Number(exemptAllowanceInput.value);
+                      const claimedRelifIncome= Number(claimedRelifIncomeInput.value);
+                      const netSalary = grossSalary - exemptAllowance-claimedRelifIncome;
+                      netSalaryInput.value = netSalary.toFixed(2);
+                    }
+
+
+                    netSalaryInput.addEventListener("input", updateGrossTotalSalaryTotalDeductionTotalIncome);
+                    deductionsInput.addEventListener("input", updateGrossTotalSalaryTotalDeductionTotalIncome);
+                    grossTotalIncomeInput.addEventListener("input",updateGrossTotalSalaryTotalDeductionTotalIncome)
+                    //totalDeductionsInput.addEventListener("input", updateGrossTotalSalary);
+                    //totalIncomeInput.addEventListener("input",updateGrossTotalSalary);
+                    totalDeductionInput.addEventListener("input", updateGrossTotalSalaryTotalDeductionTotalIncome);
+                    totalDeductionsInput.addEventListener("input", updateGrossTotalSalaryTotalDeductionTotalIncome);
+                    totalIncomeInput.addEventListener("input",updateGrossTotalSalaryTotalDeductionTotalIncome);
+                    function updateGrossTotalSalaryTotalDeductionTotalIncome() {
+                        const netSalary = Number(netSalaryInput.value);
+                        const deductions = Number(deductionsInput.value);
+                        const grossTotalSalary = netSalary - deductions;
+                        grossTotalSalaryInput.value = grossTotalSalary.toFixed(2);
+                        grossTotalIncomeInput.value=grossTotalSalary
+                        //totalIncomeInput.value= grossTotalSalary
+                        const totalDeduction = Number(totalDeductionInput.value);
+                        const totalDeductions=totalDeduction;
+                        totalDeductionsInput.value = totalDeduction;
+                        const totalIncome = grossTotalSalary-totalDeduction;
+                        totalIncomeInput.value = totalIncome
+                        
+
+                      }
+
+                  //  totalDeductionInput.addEventListener("input", updateTotaldeductions);
+                   // totalDeductionsInput.addEventListener("input", updateTotaldeductions);
+                    //totalIncomeInput.addEventListener("input",updateTotaldeductions);
+                   // function updateTotaldeductions(){
+                    //    const totalDeduction = Number(totalDeductionInput.value);
+                      //  const totalDeductions=totalDeduction;
+                        //const totalIncome=totalDeduction;
+                        //totalDeductionsInput.value = totalDeduction;
+                        //totalIncomeInput.value = totalDeduction;
+
+                   // }
+                    
+                  </script>
+                    <br><br>
             </form>
+            
     </section>
 
 
@@ -295,3 +455,4 @@
 </body>
 
 </html>
+
