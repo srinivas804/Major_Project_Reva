@@ -1,0 +1,33 @@
+footer {
+    background-color: white;
+    color: black;
+}
+
+fieldset.scheduler-border {
+    width:inherit; /* Or auto */
+    padding:0 10px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+}
+
+legend.scheduler-border {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+}
+
+body {
+    background-color: #EEEFF6;
+}
+
+.field-set {
+    background-color: white;
+    border: 1px solid black;
+    width:auto; /* Or auto */
+    padding: 30px; 
+}
+
+.white-bg {
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px; 
+}

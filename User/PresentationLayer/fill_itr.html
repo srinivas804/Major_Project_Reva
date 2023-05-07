@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="./css/fill_itr.css">
+    <title>Home | Income Tax Department</title>
+</head>
+<!-- bg-dark -->
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <a href="./index.html">
+                    <img src="./images/logo.svg" alt="EFiling Logo" typeof="Image" role="img" id="en">
+                </a>
+            </div>
+            <!-- <div class="header-topright">
+                <ul class="menu">
+                    <li id="login" aria-label="Login button" role="presentation">
+                        <div><a class="btn login" data-drupal-button-link="btn" href="../LoginWorkflow/Login/index.html"
+                                aria-label="Login button" role="presentation">Login</a></div>
+                    </li>
+                    <li id="register" aria-label="Register button" role="presentation">
+                        <div><a class="btn login register" data-drupal-button-link="btn"
+                                href="../LoginWorkflow/SignUp/index.html" aria-label="Register button"
+                                role="presentation" id="registration">Register</a></div>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #29398D; padding-left: 8.143%;">
+        <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./dashboard.html">Dashboard <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">e-File</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Dropdown link
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <br><br>
+        <h2>Let's fill the details for your return
+        </h2>
+        <p>Carefully fill the details asked below with the help of form 16 and form 16A. Please ensure that <br> the
+            details entered in each section are correct before proceeding.</p>
+
+        <h3>Income Tax Return</h3> <br>
+        
+
+            <form id="myForm"  method="POST" >
+                <!-- Personal Information  -->
+                <h4>Personal Information</h4>
+                <fieldset class="field-set">
+                    <!-- <legend class="field-set" style="border:none;"><h4>Personal Information</h4></legend> -->
+
+                    <h5>Profile</h5>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" class="form-control firstName" id="firstName" placeholder="First Name..."
+                                name="username" readonly>
+                        </div>
+                        <div class="form-group col">
+                            <label for="middleName">Middle Name:</label>
+                            <input type="text" class="form-control middleName" id="middleName"
+                                placeholder="Middle Name..." name="username" readonly>
+                        </div>
+                        <div class="form-group col">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" class="form-control lastName" id="lastName" placeholder="Last Name..."
+                                name="username" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="Aadhaar">Aadhaar:</label>
+                            <input type="text" class="form-control Aadhaar col" id="aadhaarNumber" placeholder="Aadhaar..."
+                                name="username" readonly>
+
+                        </div>
+                        <div class="form-group col">
+                            <label for="PAN">PAN:</label>
+                            <input type="text" class="form-control col PAN" id="PANNumber" placeholder="PAN..."
+                                name="username" readonly>
+                        </div>
+                    </div>
+                      
+                    <h5>Contact</h5>
+                    Details furnished here will be used for communication purposes
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control email" id="email" placeholder="Email..."
+                                name="email" readonly>
+                        </div>
+                        <div class="form-group col">
+                            <label for="phone">Phone:</label>
+                            <input type="phone" class="form-control phone" id="phoneNumber" placeholder="Phone..."
+                                name="email" readonly>
+                        </div>
+                    </div>
+
+                </fieldset>
+                <script>
+                    const userId = 123; // set the user ID
+                    const url = `http://192.168.0.198:4003/user/profile?userId=${userId}`;
+                  
+                    fetch(url)
+                      .then(response => response.json())
+                      .then(data => {
+                        const firstName = data.firstName;
+                        const middleName = data.middleName;
+                        const lastName = data.lastName;
+                        const aadhaarNumber = data.aadhaarNumber;
+                        const PANNumber = data.PANNumber;
+                        const email = data.email;
+                        const phoneNumber = data.phoneNumber;
+                        // update the input fields with the retrieved values
+                        document.querySelector('#firstName').value = firstName;
+                        document.querySelector('#middleName').value = middleName;
+                        document.querySelector('#lastName').value = lastName;
+                        document.querySelector('#aadhaarNumber').value = aadhaarNumber;
+                        document.querySelector('#PANNumber').value = PANNumber;
+                        document.querySelector('#email').value = email;
+                        document.querySelector('#phoneNumber').value = phoneNumber;
+                      })
+                      .catch(error => console.error(error));
+                  </script>
+                <br>
+                <!-- Contact Information -->
+                <h4>Enter your income source details</h4>
+                <fieldset class="field-set">
+                    Please enter your income sources as collected from various sources. <br> <br>
+                    <div class="form-control">
+                        <div class="form-group col-7">
+                            <label for="grossSalary">i. Gross Salary (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="grossSalary" placeholder="&#x20B9;"
+                                name="grossSalary">
+                        </div>
+                        <div class="form-group col-7">
+                            <label for="exemptAllowance">ii. Less: Exempt Allowance (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="exemptAllowance" placeholder="&#x20B9;"
+                                name="exemptAllowance">
+                        </div>
+                        <div class="form-group col-7">
+                            <label for="claimedRelifIncome">iia. Less: Income claimed for relief from taxation u/s 89A
+                                (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="claimedRelifIncome" placeholder="&#x20B9;"
+                                name="claimedRelifIncome">
+                        </div>
+                        <div class="form-group col-7">
+                            <label for="netSalary">iii. Net Salary (i - ii - iia) (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="netSalary" placeholder="&#x20B9;"
+                                name="netSalary" readonly>
+                        </div>
+                        <div class="form-group col-7">
+                            <label for="deductions">iv. Deductions u/s 16 (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="deductions" placeholder="&#x20B9;"
+                                name="deductions">
+                        </div>
+                        <div class="form-group col-7">
+                            <label for="grossTotalSalary">v. Gross Total Income' (iii - iv) (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="grossTotalSalary" placeholder="&#x20B9;"
+                                name="grossTotalSalary" readonly>
+                        </div>
+                    </div>
+
+                </fieldset>
+                <br>
+                <h4>Deductions</h4>
+                <fieldset class="field-set">
+                    Please enter your total deduction amount below. <br> <br>
+                    <div class="form">
+                        <div class="form-group col-7">
+                            <label for="totalDeductions">Total Deductions (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="totalDeduction" placeholder="&#x20B9;"
+                                name="totalDeductions">
+
+                        </div>
+                    </div>
+                </fieldset>
+                <br>
+                <h4>Enter your taxes paid details</h4>
+                <fieldset class="field-set">
+                    Please enter details of taxes paid by you in the last financial year and proceed further. <br> <br>
+                    <div class="form">
+                        <div class="form-group col-7">
+                            <label for="TDSOnSalaryIncome">Details of Tax Deducted at Source (TDS) on Salary Income
+                                (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="TDSOnSalaryIncome" placeholder="&#x20B9;"
+                                name="TDSOnSalaryIncome">
+                        </div>
+                        <div class="form-group col-7">
+                            <label for="TDSFromOtherIncomes">Details of Tax Deducted at Source (TDS) from Income other
+                                than Salary (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="TDSFromOtherIncomes" placeholder="&#x20B9;"
+                                name="TDSFromOtherIncomes">
+                        </div>
+                        <div class="form-group col-7">
+                            <label for="totalTaxPaid">Total Taxes Paid (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="totalTaxPaid" placeholder="&#x20B9;"
+                                name="totalTaxPaid">
+                        </div>
+                    </div>
+                </fieldset>
+                <br>
+                <h4>Enter your tax liability details</h4>
+                Please enter your tax liability details and proceed further. <br> <br>
+                <fieldset class="field-set">
+                    <br>
+                    <h5>Computation of Income</h5>
+                    <hr>
+                    <div class="form">
+                        <div class="form-group col-7">
+                            <label for="grossTotalIncome">Gross Total Income (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="grossTotalIncome" placeholder="&#x20B9;"
+                                name="grossTotalIncome" readonly>
+                        </div>
+                        <div class="form-group col-7">
+                            <label for="totalDeductions">Total Deductions (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="totalDeductions" placeholder="&#x20B9;"
+                                name="totalDeductions" readonly>
+                        </div>
+                        <div class="form-group col-7">
+                            <label for="totalIncome">Total Income (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="totalIncome" placeholder="&#x20B9;"
+                                name="totalIncome" readonly >
+                        </div>
+                        <h5>Computation of Tax</h5>
+                        <hr>
+                        <div class="form-group col-7">
+                            <label for="totalTax">Tax Payable on Total Income (&#x20B9;):</label>
+                            <input type="number" class="form-control" id="totalTax" placeholder="&#x20B9;"
+                                name="totalTax">
+                        </div>
+                    </div>
+                </fieldset>
+                <br>
+                Verify all details you have entered above and click on proceed to verification.
+                <br><br>
+                    <input
+                    type="submit"
+                    value="Proceed to Verification  >"
+                    style="
+                      background: transparent;
+                      color: #ffffff;
+                      font-weight: 500;
+                      border-radius: 4px;
+                      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+                      background-color: #2a3a8d;
+                      padding: 8px 16px;
+                      border: none;
+                      font-size: 12px;
+                      font-family: Roboto, sans-serif;
+                      line-height: 1.17;
+                      font-stretch: normal;
+                      font-style: normal;
+                      letter-spacing: normal;
+                    "
+                  />
+                  <br><br>
+                  <script>
+                    document.querySelector("#myForm").addEventListener("submit", (e) => {
+                      e.preventDefault();
+                      const payload = {
+                        userId: 123,
+                        firstName: document.querySelector("#firstName").value,
+                        middleName: document.querySelector("#middleName").value,
+                        lastName: document.querySelector("#lastName").value,
+                        PANNumber: document.querySelector("#PANNumber").value,
+                        phoneNumber: document.querySelector("#phoneNumber").value,
+                        email: document.querySelector("#email").value,
+                        grossSalary: document.querySelector("#grossSalary").value,
+                        exemptAllowance: document.querySelector("#exemptAllowance").value,
+                        claimedRelifIncome: document.querySelector("#claimedRelifIncome").value,
+                        netSalary: document.querySelector("#netSalary").value,
+                        deductions: document.querySelector("#deductions").value,
+                        grossTotalSalary:document.querySelector("#grossTotalSalary"),
+                        totalDeductions: document.querySelector("#totalDeductions").value,
+                        TDSOnSalaryIncome: document.querySelector("#TDSOnSalaryIncome").value,
+                        TDSFromOtherIncomes: document.querySelector("#TDSFromOtherIncomes").value,
+                        totalTaxPaid: document.querySelector("#totalTaxPaid").value,
+                        grossTotalIncome: document.querySelector("#grossTotalIncome").value,
+                        //totalDeductions: document.querySelector("#totalDeductions").value,
+                        totalIncome: document.querySelector("#totalIncome").value,
+                        totalTax: document.querySelector("#totalTax").value,
+
+                      };
+                      console.log({ payload });
+                      postData(payload);
+                    });
+                    async function postData(data) {
+                      var myHeaders = new Headers();
+                      //   myHeaders.append("Content-Type", "application/json");
+              
+                      console.log(data);
+                      var requestOptions = {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/x-www-form-urlencoded",
+                          Connection: "keep-alive",
+                          Accept: "/",
+                        },
+              
+                        body: JSON.stringify(data),
+                        redirect: "follow",
+                      };
+                      console.log({ requestOptions });
+              
+                      await fetch("http://192.168.0.198:4003/user/itr", requestOptions)
+                        .then((response) => (window.location.href = "./verification.html"))
+                        .then((result) => console.log(result))
+                        .catch((error) => console.log("error", error));
+                    }
+                  </script>
+                  <script>
+                    const grossSalaryInput = document.getElementById("grossSalary");
+                    const exemptAllowanceInput = document.getElementById("exemptAllowance");
+                    const claimedRelifIncomeInput=document.getElementById("claimedRelifIncome")
+                    const netSalaryInput = document.getElementById("netSalary");
+                    const deductionsInput = document.getElementById("deductions");
+                    const grossTotalSalaryInput = document.getElementById("grossTotalSalary");
+                    const totalDeductionInput = document.getElementById("totalDeduction");
+                    const totalDeductionsInput = document.getElementById("totalDeductions");
+                    const grossTotalIncomeInput = document.getElementById("grossTotalIncome");
+                    const totalIncomeInput = document.getElementById("totalIncome")
+
+                    
+                    grossSalaryInput.addEventListener("input", updateNetSalary);
+                    exemptAllowanceInput.addEventListener("input", updateNetSalary);
+                    claimedRelifIncomeInput.addEventListener("input", updateNetSalary);
+                    function updateNetSalary() {
+                      const grossSalary = Number(grossSalaryInput.value);
+                      const exemptAllowance = Number(exemptAllowanceInput.value);
+                      const claimedRelifIncome= Number(claimedRelifIncomeInput.value);
+                      const netSalary = grossSalary - exemptAllowance-claimedRelifIncome;
+                      netSalaryInput.value = netSalary.toFixed(2);
+                    }
+
+
+                    netSalaryInput.addEventListener("input", updateGrossTotalSalaryTotalDeductionTotalIncome);
+                    deductionsInput.addEventListener("input", updateGrossTotalSalaryTotalDeductionTotalIncome);
+                    grossTotalIncomeInput.addEventListener("input",updateGrossTotalSalaryTotalDeductionTotalIncome)
+                    //totalDeductionsInput.addEventListener("input", updateGrossTotalSalary);
+                    //totalIncomeInput.addEventListener("input",updateGrossTotalSalary);
+                    totalDeductionInput.addEventListener("input", updateGrossTotalSalaryTotalDeductionTotalIncome);
+                    totalDeductionsInput.addEventListener("input", updateGrossTotalSalaryTotalDeductionTotalIncome);
+                    totalIncomeInput.addEventListener("input",updateGrossTotalSalaryTotalDeductionTotalIncome);
+                    function updateGrossTotalSalaryTotalDeductionTotalIncome() {
+                        const netSalary = Number(netSalaryInput.value);
+                        const deductions = Number(deductionsInput.value);
+                        const grossTotalSalary = netSalary - deductions;
+                        grossTotalSalaryInput.value = grossTotalSalary.toFixed(2);
+                        grossTotalIncomeInput.value=grossTotalSalary
+                        //totalIncomeInput.value= grossTotalSalary
+                        const totalDeduction = Number(totalDeductionInput.value);
+                        const totalDeductions=totalDeduction;
+                        totalDeductionsInput.value = totalDeduction;
+                        const totalIncome = grossTotalSalary-totalDeduction;
+                        totalIncomeInput.value = totalIncome
+                        
+
+                      }
+
+                  //  totalDeductionInput.addEventListener("input", updateTotaldeductions);
+                   // totalDeductionsInput.addEventListener("input", updateTotaldeductions);
+                    //totalIncomeInput.addEventListener("input",updateTotaldeductions);
+                   // function updateTotaldeductions(){
+                    //    const totalDeduction = Number(totalDeductionInput.value);
+                      //  const totalDeductions=totalDeduction;
+                        //const totalIncome=totalDeduction;
+                        //totalDeductionsInput.value = totalDeduction;
+                        //totalIncomeInput.value = totalDeduction;
+
+                   // }
+                    
+                  </script>
+                    <br><br>
+            </form>
+            
+    </section>
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="col-xlg-6 col-lg-5 col-md-6 col-sm-12 copyright_left">
+                <div class="region region-copyright-left">
+                    <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+                        <div class="lastfooter flex">
+                            <p><img alt="National Emblem" class="img1" src="./images/emblem_coloured.svg"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xlg-6 col-lg-7 col-md-6 col-sm-12 copyright_right">
+                <div class="region region-copyright-right">
+                    <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item"
+                        tabindex="0">
+                        <p>Last reviewed and updated on : <span id="datetime">01-May-2023</span><br>
+                            This site is best viewed in 1024 * 768 resolution with latest version of
+                            Chrome, Firefox, Safari and Microsoft Edge. <br>
+                            Copyright @ Income Tax Department, Ministry of Finance, Government of India.
+                            All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+

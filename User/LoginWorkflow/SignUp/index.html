@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bank Login</title>
+    <!-- Load the AWS SDK for JavaScript -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.863.0.min.js"></script>
+    <!-- Initialize the AWS SDK with your Cognito pool ID -->
+    <link rel="stylesheet" type="text/css" href="./index.css" />
+  </head>
+  <body>
+    <div class="signup-box">
+      <h1>Sign up</h1>
+      <form>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+        <div class="form-group">
+          <div class="button-group">
+            <input
+              type="submit"
+              value="Sign up"
+              onclick="registerUser(); return false;"
+            />
+          </div>
+          <div class="signup-link">
+            <p>
+              Already have an account? <a href="../Login/index.html">Login</a>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
