@@ -359,7 +359,8 @@
                     const totalDeductionInput = document.getElementById("totalDeduction");
                     const totalDeductionsInput = document.getElementById("totalDeductions");
                     const grossTotalIncomeInput = document.getElementById("grossTotalIncome");
-                    const totalIncomeInput = document.getElementById("totalIncome")
+                    const totalIncomeInput = document.getElementById("totalIncome");
+                    const totalTaxInput = document.getElementById("totalTax");
 
                     
                     grossSalaryInput.addEventListener("input", updateNetSalary);
@@ -382,6 +383,7 @@
                     totalDeductionInput.addEventListener("input", updateGrossTotalSalaryTotalDeductionTotalIncome);
                     totalDeductionsInput.addEventListener("input", updateGrossTotalSalaryTotalDeductionTotalIncome);
                     totalIncomeInput.addEventListener("input",updateGrossTotalSalaryTotalDeductionTotalIncome);
+                    totalTaxInput.addEventListener("input", updateGrossTotalSalaryTotalDeductionTotalIncome);
                     function updateGrossTotalSalaryTotalDeductionTotalIncome() {
                         const netSalary = Number(netSalaryInput.value);
                         const deductions = Number(deductionsInput.value);
@@ -394,8 +396,33 @@
                         totalDeductionsInput.value = totalDeduction;
                         const totalIncome = grossTotalSalary-totalDeduction;
                         totalIncomeInput.value = totalIncome
+                        totalIncomeInput.value = totalIncome;
+                        const totalTax = calculateTotalTax(totalIncome);
+                        totalTaxInput.value = totalTax
                         
 
+                      }
+
+                      function calculateTotalTax(totalIncome) {
+                        let totalTax = 0;
+                        if (totalIncome <= 300000) {
+                          totalTax = totalIncome * 0;
+                        } else if (totalIncome > 300000 && totalIncome <= 600000) {
+                          totalTax = totalIncome * 0.05;
+                        }
+                        else if (totalIncome > 600000 && totalIncome <= 900000) {
+                            totalTax = totalIncome * 0.10;
+                        }
+                        else if (totalIncome > 900000 && totalIncome <= 1200000) {
+                            totalTax = totalIncome * 0.15;
+                        }
+                        else if (totalIncome > 1200000 && totalIncome <= 1500000) {
+                            totalTax = totalIncome * 0.20;
+                        }
+                        else {
+                            totalTax = totalIncome * 0.30;
+                        }
+                        return totalTax;
                       }
 
                   //  totalDeductionInput.addEventListener("input", updateTotaldeductions);
