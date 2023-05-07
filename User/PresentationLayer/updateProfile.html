@@ -9,6 +9,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/updateProfile.css">
     <title>Home | Income Tax Department</title>
 </head>
 <!-- bg-dark -->
@@ -28,10 +29,9 @@
                                 aria-label="Login button" role="presentation">Login</a></div>
                     </li> -->
                     <li id="register" aria-label="Register button" role="presentation">
-                        <div><a class="btn login register" data-drupal-button-link="btn"
-                                href="index.html" aria-label="Register button"
-                                role="presentation" id="registration">Logout</a></div>
-                    </li>   
+                        <div><a class="btn login register" data-drupal-button-link="btn" href="index.html"
+                                aria-label="Register button" role="presentation" id="registration">Logout</a></div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -71,76 +71,76 @@
     </nav>
 
     <section>
-        <br><br>
-        
-        <div class="dashboard-container">
-            <div class="profile">
-                <h3>Welcome back, <br><span id="firstName"></span> </h3>
-                <div class="image">
-                    <img style="float: left; height: 130px; width: 130px; border-radius: 50%; padding: 8px;" id="myImage"
-                        src="#" alt="">
-                    <br>
-                    <p>
-                        <span id="customerId"></span> <br>
-                        <span id="aadhaarNumber"></span> <br><br></p><p>
-                        <span id="email"></span> <br>
-                        <!-- Contact Details <a href="./updateContact.html" class="update-text">Update</a> <br> -->
-                        <!-- Bank Account <a href="#" class="update-text">Update</a> -->
-                    </p>
-                    
-                </div>
-                <p style="text-align: justify;">Update your profile and contact information before proceeding with ITR filing. Ignore if already updated.</p>
+        <div class="profile-container">
+            <form id="updateProfileForm" method="POST" enctype="multipart/form-data">
+                <!-- Personal Information  -->
+                <h4>Personal Information</h4>
+                <fieldset class="field-set">
+                    <!-- <legend class="field-set" style="border:none;"><h4>Personal Information</h4></legend> -->
 
-                <a class="btn login register status-btn" data-drupal-button-link="btn"
-                    href="./updateProfile.html" aria-label="Register button" role="presentation"
-                    id="registration">Update</a>
-            </div>
-            <div class="dashboard-right-content">
-                <div class="right-card">
-                    <h4>File your return for the year ended on 31-Mar-2023</h4>
-                    <p>For assessment year 2023-24</p>
-                    <a class="btn login register status-btn" data-drupal-button-link="btn"
-                    href="./fileIncomeTaxReturn.html" aria-label="Register button" role="presentation"
-                    id="registration">File Now</a>
-                </div>
-                <div class="right-card">
-                    <h4>Income Tax Returns Verification Status</h4>
-                    <p>You can check your ITR verified status by clicking on below button.
-                    </p>
-                    
-                    <a class="btn login register status-btn" data-drupal-button-link="btn"
-                    href="#" aria-label="Register button" role="presentation"
-                    id="registration">Status</a>
-                </div>
-                <div class="right-card">
-                    <h4>Recent Filed Returns</h4>
-                    <p>You can check your recently filed returns below.
-                    </p>
-                    No Records!
-                    <!-- <a class="btn login register status-btn" data-drupal-button-link="btn"
-                    href="#" aria-label="Register button" role="presentation"
-                    id="registration">Status</a> -->
-                </div>
-            </div>
+                    <h5>Profile</h5>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" class="form-control firstName" id="firstName" placeholder="First Name..."
+                                name="username">
+                        </div>
+                        <div class="form-group col">
+                            <label for="middleName">Middle Name:</label>
+                            <input type="text" class="form-control middleName" id="middleName"
+                                placeholder="Middle Name..." name="username">
+                        </div>
+                        <div class="form-group col">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" class="form-control lastName" id="lastName" placeholder="Last Name..."
+                                name="username">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="Aadhaar">Aadhaar:</label>
+                            <input type="text" class="form-control Aadhaar col" id="aadhaarNumber"
+                                placeholder="Aadhaar..." name="username">
+
+                        </div>
+                        <div class="form-group col">
+                            <label for="PAN">PAN:</label>
+                            <input type="text" class="form-control col PAN" id="PANNumber" placeholder="PAN..."
+                                name="username">
+                        </div>
+                    </div>
 
 
+                    <h5>Contact</h5>
+                    Details furnished here will be used for communication purposes
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control email" id="email" placeholder="Email..."
+                                name="email">
+                        </div>
+                        <div class="form-group col">
+                            <label for="phone">Phone:</label>
+                            <input type="phone" class="form-control phone" id="phoneNumber" placeholder="Phone..."
+                                name="email">
+                        </div>
+                    </div>
+
+                    <h5>Profile Photo</h5>
+                    <div class="form-group">
+                        <label for="file">Choose an image to upload:</label>
+                        <input type="file" name="file" id="file" class="form-control-file">
+                    </div>
+                    <a class="btn btn-primary" style="background-color: #29398D;" data-drupal-button-link="btn" href="./dashboard.html"
+                        aria-label="Register button" role="presentation" id="registration">Go Back</a>
+                    <button type="submit" class="btn btn-primary" style="background-color: #29398D;">Upload</button>
+
+                </fieldset>
+            </form>
         </div>
-        <script>
-            const params = new URLSearchParams(window.location.search);
-            const userId = params.get("userId");
-            console.log({userId})
-            fetch(`http://192.168.0.198:4003/user/profile?userId=${userId}`)
-              .then((response) => response.json())
-              .then((json) => {
-                console.log(json);
-                document.getElementById("aadhaarNumber").innerHTML = json.aadhaarNumber;
-                document.getElementById("customerId").innerHTML = json.customerId;
-                document.getElementById("email").innerHTML = json.email;
-                document.getElementById("firstName").innerHTML = json.firstName;
-                document.getElementById("myImage").src = json.profile;
-              });
-          </script>
-         
 
     </section>
 
