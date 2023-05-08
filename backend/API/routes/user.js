@@ -21,11 +21,20 @@ router.get("/profile", async (request, response) => {
     profile.aadhaarNumber =
       "********" + profile.aadhaarNumber.toString().substr(8);
   }
-  // response.status(200).json({ ...profile });
-  // response.send(path.join(__dirname, "/index.html"));
   response.send(profile);
+});
 
-  // res.sendFile(path.join(__dirname, "/index.html"));
+router.get("/itr-status", async (request, response) => {
+  const userId = request.query?.userId;
+  const params = {
+    TableName: "users-table",
+    Key: {
+      userId: `USER_ID#${userId}#PARTITION_TYPE#itr`,
+    },
+  };
+
+  const ITRStatus = await dynamoDbService.getItem(params);
+  response.send(ITRStatus);
 });
 
 router.post("/itr", async (request, response) => {
