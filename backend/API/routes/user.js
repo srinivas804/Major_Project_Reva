@@ -81,4 +81,42 @@ router.post("/itr", async (request, response) => {
   }
 });
 
+router.post("/update-profile", async (request, response) => {
+  const body = JSON.parse(Object.keys(request.body)[0]);
+
+  console.log("request body ==>", body);
+
+  try {
+    if (body.userId) {
+      const params = {
+        TableName: "users-table",
+        Item: {
+          userId: `USER_ID#${body.userId}#PARTITION_TYPE#profile`,
+          firstName: body.firstName,
+          lastName: body.lastName,
+          middleName: body.middleName,
+          aadhaarNumber: body.aadhaarNumber,
+          PANNumber: body.PANNumber,
+          email: body.email,
+          phoneNumber: body.phoneNumber,
+          customerId: body.customerId,
+        },
+      };
+
+      console.log("params ==>", JSON.stringify(params));
+      await dynamoDbService.putItem(params);
+      response.status(200).json({
+        message: "Record saved successfully.",
+      });
+    } else {
+      response.status(400).json({
+        message: "userId is required",
+      });
+    }
+  } catch (error) {
+    response.status(500).json({
+      message: "Internal server Error.",
+    });
+  }
+});
 module.exports = router;
