@@ -10,10 +10,14 @@
 # for hashing
 # for encrypting
 #for testing and interacting
+import os
 import datetime
+import sys
+import time
+import boto3
 import hashlib
 import json
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 import requests
 from uuid import uuid4
 from urllib.parse import urlparse
@@ -196,5 +200,44 @@ def replace_chain():
                     'actual_chain': blockchain.chain }
     return jsonify(response), 200
 
+#dynamodb
+
+###### connect to table ######
+
+db = boto3.resource('dynamodb')
+table = db.Table('user-table')
+
+###### getting data #######
+
+response = table.get_item(
+    Key={"userId":'#'}
+)
+tds = response['Item']['#']
+tax_payed = response['Item']['#']
+pan = response['Item']['#']
+
+###### verification ########
+
+# def ecpc(tax_payed, tds):
+#     if tax_payed > tds:
+#         print('tax paid is more than taxable amount')
+#         status = 'success'
+#         refundable_amount = tax_payed - tds
+#     else:
+#         print('tax paid is less than taxable amount')
+#         status = 'failure'
+#         pending_amount = tds - tax_payed
+
+#     return status
+
+###### updating status ######
+
+# table.update_item(
+#     Key={'userId':'#'},
+#     UpdateExpression="set v_status = :v",
+#     ExpressionAttributeValues={':v': status},
+#     ReturnValues="UPDATED_NEW"
+# )
+
 # running the app
-app.run(host = '0.0.0.0', port = 5000)
+app.run(host = '0.0.0.0', port = 5001)
